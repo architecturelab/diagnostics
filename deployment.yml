@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: diagnostics
 spec:
   replicas: 1
   selector:
@@ -19,7 +19,7 @@ spec:
         role: backend
     spec:
       containers:
-        - name: backend
+        - name: diagnostics
           image: us.gcr.io/basearchitecture/diagnostics
           # image: us-central1-docker.pkg.dev/basearchitecture/quickstart-docker-repo/static-site:f8aa8222c1f8b7325b2612303146eb9d1aa4dd33
           ports:

@@ -14,4 +14,4 @@ COPY --from=build /home/gradle/src/application/build/libs/diagnostics-applicatio
 
 ARG ACTIVE_PROFILE
 
-ENTRYPOINT ["java", "-Dspring.profiles.active=dev","-jar","/app/spring-boot-application.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=prod","-jar","/app/spring-boot-application.jar"]
