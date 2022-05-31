@@ -6,7 +6,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      role: backend
+      role: diagnostics
   minReadySeconds: 20
   strategy:
     rollingUpdate:
@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       labels:
-        role: backend
+        role: diagnostics
     spec:
       containers:
         - name: diagnostics
