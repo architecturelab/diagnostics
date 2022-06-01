@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     role: diagnostics
-  loadBalancerIP: "34.135.17.40"
+  loadBalancerIP: "34.69.117.231"
 
 
     
