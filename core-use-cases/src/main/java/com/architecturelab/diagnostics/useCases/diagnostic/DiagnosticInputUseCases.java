@@ -16,4 +16,6 @@ public interface DiagnosticInputUseCases {
 
     public DiagnosticInput getById(Long id);
 
+    public void sendMessage();
+
 }

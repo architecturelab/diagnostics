@@ -25,7 +25,7 @@ env:
   DEPLOYMENT_NAME: diagnostics # TODO: update to deployment name
   REPOSITORY: quickstart-docker-repo # TODO: update to Artifact Registry docker repository
   IMAGE: diagnostics
-  PROFILE: qa
+  PROFILE: prod # TODO: change to qa
 
 
 jobs:

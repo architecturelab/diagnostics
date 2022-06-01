@@ -3,7 +3,10 @@ package com.architecturelab.diagnostics.useCases.diagnostic;
 import com.architecturelab.diagnostics.core.domain.diagnostic.DiagnosticInput;
 import com.architecturelab.diagnostics.infra.jpa.domain.Diagnostic;
 import com.architecturelab.diagnostics.infra.jpa.repository.ticket.DiagnosticJpaRepository;
+import com.architecturelab.diagnostics.infra.kafka.producer.KafkaProducerServiceImpl;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +18,17 @@ import java.util.Optional;
 @AllArgsConstructor
 public class DiagnosticInputUseCasesImpl implements DiagnosticInputUseCases {
 
+    private static final Logger LOG = LoggerFactory.getLogger(DiagnosticInputUseCasesImpl.class);
+
     @Autowired
     private DiagnosticJpaRepository diagnosticJpaRepository;
 
+    @Autowired
+    private KafkaProducerServiceImpl kafkaProducerServiceImpl;
+
     @Override
     public DiagnosticInput create(DiagnosticInput diagnosticInput) {
+        LOG.trace("Creating diagnostic");
         Diagnostic diagnostic = diagnosticJpaRepository.save(new Diagnostic(
                 diagnosticInput.getDiagnosticId(),
                 diagnosticInput.getActivoId(),
@@ -47,6 +56,7 @@ public class DiagnosticInputUseCasesImpl implements DiagnosticInputUseCases {
 
     @Override
     public DiagnosticInput update(DiagnosticInput diagnosticInput) {
+        LOG.trace("Updating diagnostic");
         Optional<Diagnostic> diagnosticData = diagnosticJpaRepository.getById(diagnosticInput.getDiagnosticId());
         if (diagnosticData.isPresent()){
             Diagnostic diagnostic = diagnosticData.get();
@@ -78,6 +88,7 @@ public class DiagnosticInputUseCasesImpl implements DiagnosticInputUseCases {
 
     @Override
     public List<DiagnosticInput> getAll() {
+        LOG.trace("Getting all diagnostics");
         List<Diagnostic> diagnostics = (List<Diagnostic>) diagnosticJpaRepository.getAll();
 
         List<DiagnosticInput> inputs = new ArrayList<DiagnosticInput>();
@@ -101,6 +112,7 @@ public class DiagnosticInputUseCasesImpl implements DiagnosticInputUseCases {
 
     @Override
     public DiagnosticInput getById(Long id) {
+        LOG.trace("Getting diagnostic with id " + id);
         Optional<Diagnostic> diagnosticData = diagnosticJpaRepository.getById(id);
         if (diagnosticData.isPresent()){
             Diagnostic diagnostic = diagnosticData.get();
@@ -118,5 +130,10 @@ public class DiagnosticInputUseCasesImpl implements DiagnosticInputUseCases {
             return input;
         }
         return null;
+    }
+
+    @Override
+    public void sendMessage() {
+        kafkaProducerServiceImpl.send("Este es un mensaje de prueba");
     }
 }
