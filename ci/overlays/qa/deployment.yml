@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: diagnostics-qa
+  name: diagnostics
 spec:
   selector:
     matchLabels:
-      role: diagnostics-qa
+      role: diagnostics
   template:
     metadata:
       labels:
-        role: diagnostics-qa
+        role: diagnostics
     spec:
       containers:
-        - name: diagnostics-qa
+        - name: diagnostics
           image: us.gcr.io/basearchitecture/diagnostics-qa
