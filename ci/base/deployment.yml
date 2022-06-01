@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: xxx
+  name: diagnostics
 spec:
   replicas: 1
   selector:
     matchLabels:
-      role: xxx
+      role: diagnostics
   minReadySeconds: 20
   strategy:
     rollingUpdate:
@@ -16,10 +16,10 @@ spec:
   template:
     metadata:
       labels:
-        role: xxx
+        role: diagnostics
     spec:
       containers:
-        - name: xxx
+        - name: diagnostics
           image: xxx
           ports:
             - containerPort: 80
