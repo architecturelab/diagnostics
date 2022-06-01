@@ -3,7 +3,7 @@
 ## API REST
 
 - Crear
-  - URL: POST- http://34.135.72.129/diagnostics/diagnostic
+  - URL: POST- http://35.188.161.45/diagnostics/diagnostic
   - Ejemplo request:
     ```json
     {
@@ -12,7 +12,7 @@
     "vigente": "si"
     }
 - Actualizar
-  - URL: PUT- http://34.135.72.129/diagnostics/diagnostic
+  - URL: PUT- http://35.188.161.45/diagnostics/diagnostic
   - Ejemplo request:
     ```json
     {
@@ -22,6 +22,6 @@
     "vigente": "si"
     }
 - Listar todos
-  - URL: GET- http://34.135.72.129/diagnostics/diagnostics
+  - URL: GET- http://35.188.161.45/diagnostics/diagnostics
 - Consultar por Id:
-  - URL: GET- http://34.135.72.129/diagnostics/{id}
+  - URL: GET- http://35.188.161.45/diagnostics/{id}
