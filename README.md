@@ -24,4 +24,4 @@
 - Listar todos
   - URL: GET- http://35.188.161.45/diagnostics/diagnostics
 - Consultar por Id:
-  - URL: GET- http://35.188.161.45/diagnostics/{id}
+  - URL: GET- http://35.188.161.45/diagnostics/diagnostic/{id}
