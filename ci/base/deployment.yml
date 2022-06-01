@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: diagnostics
+  name: xxx
 spec:
   replicas: 1
   selector:
     matchLabels:
-      role: diagnostics
+      role: xxx
   minReadySeconds: 20
   strategy:
     rollingUpdate:
@@ -16,11 +16,10 @@ spec:
   template:
     metadata:
       labels:
-        role: diagnostics
+        role: xxx
     spec:
       containers:
-        - name: diagnostics
-          image: us.gcr.io/basearchitecture/diagnostics
-          # image: us-central1-docker.pkg.dev/basearchitecture/quickstart-docker-repo/static-site:f8aa8222c1f8b7325b2612303146eb9d1aa4dd33
+        - name: xxx
+          image: xxx
           ports:
             - containerPort: 80

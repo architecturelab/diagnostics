@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: diagnostics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: diagnostics
+  template:
+    metadata:
+      labels:
+        role: diagnostics
+    spec:
+      containers:
+        - name: diagnostics
+          image: us.gcr.io/basearchitecture/diagnostics

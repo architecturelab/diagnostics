@@ -10,12 +10,12 @@
 #
 # For more support on how to run the workflow, please visit https://github.com/google-github-actions/setup-gcloud/tree/master/example-workflows/gke-kustomize
 
-name: Build and Deploy to GKE
+name: Build and Deploy to GKE PR QA
 
 on:
-  push:
+  pull_request:
     branches:
-      - master
+      - develop
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
@@ -25,6 +25,7 @@ env:
   DEPLOYMENT_NAME: diagnostics # TODO: update to deployment name
   REPOSITORY: quickstart-docker-repo # TODO: update to Artifact Registry docker repository
   IMAGE: diagnostics
+  PROFILE: qa # TODO: change to qa
 
 
 jobs:
@@ -75,6 +76,7 @@ jobs:
             --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$GITHUB_SHA" \
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" \
+            --build-arg PROFILE=${{ env.PROFILE }} \
             .
       # Push the Docker image to Google Artifact Registry
       - name: Publish
@@ -90,6 +92,6 @@ jobs:
         run: |-
           # replacing the image name in the k8s template
           ./kustomize edit set image LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG=$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$GITHUB_SHA
-          ./kustomize build . | kubectl apply -f -
+          ./kustomize build ci/overlays/qa | kubectl apply -f -
           kubectl rollout status deployment/$DEPLOYMENT_NAME
           kubectl get services -o wide
