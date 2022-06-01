@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: diagnostics
+  name: diagnostics-qa
 spec:
   selector:
     matchLabels:
