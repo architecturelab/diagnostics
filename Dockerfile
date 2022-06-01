@@ -12,6 +12,7 @@ RUN mkdir /app
 
 COPY --from=build /home/gradle/src/application/build/libs/diagnostics-application-0.0.1-SNAPSHOT.jar /app/spring-boot-application.jar
 
-ARG ACTIVE_PROFILE
+ARG PROFILE
+ENV PROFILE_VAR=$PROFILE
 
-ENTRYPOINT ["java", "-Dspring.profiles.active=prod","-jar","/app/spring-boot-application.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=${PROFILE_VAR}","-jar","/app/spring-boot-application.jar"]

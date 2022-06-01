@@ -29,6 +29,8 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t $IMAGE_NAME .
+        with:
+          build-args: PROFILE=prod
 
       - name: Push Docker image
         run: docker push $IMAGE_NAME
