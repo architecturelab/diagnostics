@@ -23,7 +23,7 @@ env:
   GKE_CLUSTER: cluster-main    # TODO: update to cluster name
   GKE_ZONE: us-central1-c   # TODO: update to cluster zone
   DEPLOYMENT_NAME: diagnostics # TODO: update to deployment name
-  REPOSITORY: diagnostics # TODO: update to Artifact Registry docker repository
+  REPOSITORY: quickstart-docker-repo # TODO: update to Artifact Registry docker repository
   IMAGE: diagnostics
   PROFILE: prod
 
