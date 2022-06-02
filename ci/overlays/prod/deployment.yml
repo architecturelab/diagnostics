@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: diagnostics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: diagnostics
+  minReadySeconds: 20
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        role: diagnostics
+    spec:
+      containers:
+        - name: diagnostics
+          image: us-central1-docker.pkg.dev/basearchitecture/quickstart-docker-repo/diagnostics
+          ports:
+            - containerPort: 80

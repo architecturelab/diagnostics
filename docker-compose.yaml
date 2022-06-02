@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        PROFILE: dev
+    restart: on-failure
+    networks:
+      - local-environment
+    ports:
+      - 8083:80
+    volumes:
+      - .m2:/root/.m2
+
+networks:
+  local-environment:
+    external: true

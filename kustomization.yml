@@ -1,0 +1,3 @@
+resources:
+  - ./ci/overlays/qa
+  - ./ci/overlays/prod
