@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        PROFILE: dev
     restart: on-failure
     networks:
       - local-environment
