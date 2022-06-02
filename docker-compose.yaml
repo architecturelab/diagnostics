@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        PROFILE: prod
+        PROFILE: dev
     restart: on-failure
     networks:
       - local-environment
