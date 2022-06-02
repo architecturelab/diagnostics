@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: diagnostics-lb
+  name: diagnostics
 spec:
   ports:
     - protocol: TCP
@@ -12,6 +12,3 @@ spec:
     role: diagnostics
   type: LoadBalancer
   loadBalancerIP: "34.69.117.231"
-
-
-    

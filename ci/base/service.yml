@@ -11,7 +11,7 @@ spec:
   selector:
     role: diagnostics
   type: LoadBalancer
-  loadBalancerIP: xxx
+  loadBalancerIP: "34.69.117.231"
 
 
     

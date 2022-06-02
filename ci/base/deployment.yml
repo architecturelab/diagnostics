@@ -20,6 +20,6 @@ spec:
     spec:
       containers:
         - name: diagnostics
-          image: xxx
+          image: us.gcr.io/basearchitecture/diagnostics
           ports:
             - containerPort: 80

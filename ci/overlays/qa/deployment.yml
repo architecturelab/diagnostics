@@ -1,13 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: diagnostics
-  namespace: qa
+  name: diagnostics-qa
 spec:
   replicas: 1
   selector:
     matchLabels:
-      role: diagnostics
+      role: diagnostics-qa
   minReadySeconds: 20
   strategy:
     rollingUpdate:
@@ -17,10 +16,10 @@ spec:
   template:
     metadata:
       labels:
-        role: diagnostics
+        role: diagnostics-qa
     spec:
       containers:
-        - name: diagnostics
+        - name: diagnostics-qa
           image: us.gcr.io/basearchitecture/diagnostics-qa
           ports:
             - containerPort: 80
