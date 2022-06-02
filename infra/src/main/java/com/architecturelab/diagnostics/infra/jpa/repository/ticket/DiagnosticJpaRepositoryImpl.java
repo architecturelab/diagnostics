@@ -34,4 +34,9 @@ public class DiagnosticJpaRepositoryImpl implements DiagnosticJpaRepository {
     public Optional<Diagnostic> getById(Long id) {
         return diagnosticDao.findById(id);
     }
+
+    @Override
+    public Optional<Diagnostic> getByTicketId(Long ticketId){
+        return diagnosticDao.findByTicketId(ticketId);
+    }
 }
