@@ -20,6 +20,6 @@ spec:
     spec:
       containers:
         - name: diagnostics
-          image: us.gcr.io/basearchitecture/quickstart-docker-repo/diagnostics
+          image: us-central1-docker.pkg.dev/basearchitecture/quickstart-docker-repo/diagnostics
           ports:
             - containerPort: 80
