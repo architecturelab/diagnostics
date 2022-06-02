@@ -24,7 +24,7 @@ env:
   GKE_ZONE: us-central1-c   # TODO: update to cluster zone
   DEPLOYMENT_NAME: diagnostics-qa # TODO: update to deployment name
   REPOSITORY: quickstart-docker-repo # TODO: update to Artifact Registry docker repository
-  IMAGE: diagnostics-qa
+  IMAGE: diagnostics
   PROFILE: qa # TODO: change to qa
 
 
