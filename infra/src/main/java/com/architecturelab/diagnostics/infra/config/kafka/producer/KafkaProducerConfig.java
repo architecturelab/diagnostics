@@ -1,5 +1,6 @@
 package com.architecturelab.diagnostics.infra.config.kafka.producer;
 
+import com.architecturelab.diagnostics.infra.kafka.domain.Message;
 import org.apache.kafka.common.config.SslConfigs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +23,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, String> kafkaTemplate() {
+    public KafkaTemplate<String, Message> kafkaTemplate() {
         return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(producerConfig()));
     }
 }
