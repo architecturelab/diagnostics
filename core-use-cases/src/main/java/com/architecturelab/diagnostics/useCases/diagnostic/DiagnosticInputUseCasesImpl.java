@@ -22,7 +22,7 @@ public class DiagnosticInputUseCasesImpl implements DiagnosticInputUseCases {
     public DiagnosticInput create(DiagnosticInput diagnosticInput) {
         Diagnostic diagnostic = diagnosticJpaRepository.save(new Diagnostic(
                 diagnosticInput.getDiagnosticId(),
-                diagnosticInput.getActivoId(),
+                diagnosticInput.getTicketId(),
                 diagnosticInput.getDescripcion(),
                 diagnosticInput.getApto(),
                 diagnosticInput.getReparacion(),
@@ -33,7 +33,7 @@ public class DiagnosticInputUseCasesImpl implements DiagnosticInputUseCases {
         ));
         DiagnosticInput input = new DiagnosticInput(
                 diagnostic.getId(),
-                diagnostic.getActivoId(),
+                diagnostic.getTicketId(),
                 diagnostic.getDescripcion(),
                 diagnostic.getApto(),
                 diagnostic.getReparacion(),
@@ -50,7 +50,7 @@ public class DiagnosticInputUseCasesImpl implements DiagnosticInputUseCases {
         Optional<Diagnostic> diagnosticData = diagnosticJpaRepository.getById(diagnosticInput.getDiagnosticId());
         if (diagnosticData.isPresent()){
             Diagnostic diagnostic = diagnosticData.get();
-            diagnostic.setActivoId(diagnosticInput.getActivoId());
+            diagnostic.setTicketId(diagnosticInput.getTicketId());
             diagnostic.setDescripcion(diagnosticInput.getDescripcion());
             diagnostic.setApto(diagnosticInput.getApto());
             diagnostic.setReparacion(diagnosticInput.getReparacion());
@@ -62,7 +62,7 @@ public class DiagnosticInputUseCasesImpl implements DiagnosticInputUseCases {
             Diagnostic updated = diagnosticJpaRepository.save(diagnostic);
             DiagnosticInput input = new DiagnosticInput(
                     updated.getId(),
-                    updated.getActivoId(),
+                    updated.getTicketId(),
                     updated.getDescripcion(),
                     updated.getApto(),
                     updated.getReparacion(),
@@ -85,7 +85,7 @@ public class DiagnosticInputUseCasesImpl implements DiagnosticInputUseCases {
         diagnostics.forEach(i -> {
             DiagnosticInput diagnostic = new DiagnosticInput(
                     i.getId(),
-                    i.getActivoId(),
+                    i.getTicketId(),
                     i.getDescripcion(),
                     i.getApto(),
                     i.getReparacion(),
@@ -106,7 +106,28 @@ public class DiagnosticInputUseCasesImpl implements DiagnosticInputUseCases {
             Diagnostic diagnostic = diagnosticData.get();
             DiagnosticInput input = new DiagnosticInput(
                     diagnostic.getId(),
-                    diagnostic.getActivoId(),
+                    diagnostic.getTicketId(),
+                    diagnostic.getDescripcion(),
+                    diagnostic.getApto(),
+                    diagnostic.getReparacion(),
+                    diagnostic.getUsuarioCreacion(),
+                    diagnostic.getFechaCreacion(),
+                    diagnostic.getUsuarioModifica(),
+                    diagnostic.getFechaModifica()
+            );
+            return input;
+        }
+        return null;
+    }
+
+    @Override
+    public DiagnosticInput getByTicketId(Long id) {
+        Optional<Diagnostic> diagnosticData = diagnosticJpaRepository.getByTicketId(id);
+        if (diagnosticData.isPresent()){
+            Diagnostic diagnostic = diagnosticData.get();
+            DiagnosticInput input = new DiagnosticInput(
+                    diagnostic.getId(),
+                    diagnostic.getTicketId(),
                     diagnostic.getDescripcion(),
                     diagnostic.getApto(),
                     diagnostic.getReparacion(),

@@ -12,4 +12,5 @@ public interface DiagnosticJpaRepository {
 
     public Optional<Diagnostic> getById(Long id);
 
+    public Optional<Diagnostic> getByTicketId(Long ticketId);
 }

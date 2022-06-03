@@ -29,6 +29,19 @@ public class DiagnosticsController {
         }
     }
 
+    @GetMapping("/diagnostic/ticket/{ticketId}")
+    public ResponseEntity<DiagnosticInput> getDiagnosticByTicketId(@PathVariable Long ticketId) {
+        try {
+            DiagnosticInput diagnosticInput = diagnosticInputUseCases.getByTicketId(ticketId);
+            if (diagnosticInput != null) {
+                return new ResponseEntity<>(diagnosticInput, HttpStatus.OK);
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PostMapping("/diagnostic")
     public ResponseEntity<DiagnosticInput> createDiagnostic(@RequestBody DiagnosticInput diagnosticInput) {
         try {
