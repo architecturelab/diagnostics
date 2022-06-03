@@ -28,6 +28,7 @@ repositories {
 
 dependencies {
     implementation project(':diagnostics-core-domain')
+    implementation project(':diagnostics-base')
     implementation 'org.springframework.boot:spring-boot-starter-actuator:2.6.6'
     implementation 'org.springframework.boot:spring-boot-starter:2.6.6'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.6'

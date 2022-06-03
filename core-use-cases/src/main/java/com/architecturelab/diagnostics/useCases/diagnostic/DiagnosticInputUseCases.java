@@ -18,4 +18,6 @@ public interface DiagnosticInputUseCases {
 
     public DiagnosticInput getByTicketId(Long id);
 
+    public void sendMessage();
+
 }
