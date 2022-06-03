@@ -1,5 +1,7 @@
 package com.architecturelab.diagnostics.infra.kafka.producer;
 
+import com.architecturelab.diagnostics.infra.kafka.domain.Message;
+
 public interface KafkaProducerService {
-    void send(String message);
+    void send(Message message);
 }

@@ -4,6 +4,7 @@ import com.architecturelab.diagnostics.core.domain.diagnostic.DiagnosticInput;
 import com.architecturelab.diagnostics.infra.jpa.domain.Diagnostic;
 import com.architecturelab.diagnostics.infra.jpa.repository.ticket.DiagnosticJpaRepository;
 import com.architecturelab.diagnostics.infra.kafka.producer.KafkaProducerServiceImpl;
+import com.architecturelab.diagnostics.infra.kafka.domain.Message;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -134,6 +136,6 @@ public class DiagnosticInputUseCasesImpl implements DiagnosticInputUseCases {
 
     @Override
     public void sendMessage() {
-        kafkaProducerServiceImpl.send("Este es un mensaje de prueba");
+        kafkaProducerServiceImpl.send(new Message(1L,1L, new Date()));
     }
 }

@@ -1,6 +1,6 @@
 package com.architecturelab.diagnostics.infra.kafka.producer;
 
-import lombok.RequiredArgsConstructor;
+import com.architecturelab.diagnostics.infra.kafka.domain.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +18,10 @@ public class KafkaProducerServiceImpl implements KafkaProducerService {
     private String topic;
 
     @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     @Override
-    public void send(String message) {
+    public void send(Message message) {
         LOG.info(String.format("Message sent -> %s", message));
         this.kafkaTemplate.send(this.topic, message);
     }
