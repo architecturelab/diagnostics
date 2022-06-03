@@ -68,12 +68,8 @@ public class DiagnosticsController {
     }
 
     @GetMapping("/kafka")
-    public ResponseEntity<String> sendMessage() {
-        try {
-            diagnosticInputUseCases.sendMessage();
-            return new ResponseEntity<>("Message sent", HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage() + e.getStackTrace() + e.getCause(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public String sendMessage() {
+        diagnosticInputUseCases.sendMessage();
+        return "sent";
     }
 }
