@@ -18,7 +18,7 @@ public class KafkaProducerServiceImpl implements KafkaProducerService {
     private String topic;
 
     @Autowired
-    private KafkaTemplate<String, Object> kafkaTemplate;
+    private KafkaTemplate<String, Message> kafkaTemplate;
 
     @Override
     public void send(Message message) {

@@ -1,7 +1,6 @@
 package com.architecturelab.diagnostics.infra.config.kafka.producer;
 
 import com.architecturelab.diagnostics.infra.kafka.domain.Message;
-import org.apache.kafka.common.config.SslConfigs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +14,7 @@ import java.util.Map;
 @Configuration
 public class KafkaProducerConfig {
     @Autowired
-    private ProducerFactory<Integer, Message> producerFactory;
+    private ProducerFactory<Integer, Object> producerFactory;
 
     public Map<String, Object> producerConfig() {
         Map<String, Object> producerConfig = new HashMap<>(producerFactory.getConfigurationProperties());
