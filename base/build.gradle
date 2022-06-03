@@ -1,0 +1,27 @@
+plugins {
+    id 'com.architecturelab.java-conventions'
+    id 'org.springframework.boot' version '2.6.6'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.architecturelab'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+description = 'base'
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter:2.6.6")
+}

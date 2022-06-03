@@ -21,6 +21,7 @@ dependencies {
     implementation project(':diagnostics-core-domain')
     implementation project(':diagnostics-core-use-cases')
     implementation project(':diagnostics-infra')
+    implementation project(':diagnostics-base')
     implementation 'org.apache.logging.log4j:log4j-to-slf4j:2.17.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.6'
     compileOnly 'org.projectlombok:lombok:1.18.24'

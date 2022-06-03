@@ -11,7 +11,7 @@ public class DiagnosticInput {
 
     private Long diagnosticId;
 
-    private Long activoId;
+    private Long ticketId;
 
     private String descripcion;
 

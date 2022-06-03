@@ -28,8 +28,8 @@ public class Diagnostic implements Serializable {
     @GeneratedValue(strategy= GenerationType.AUTO)
     protected Long id;
 
-    @Column(name = "activo_id")
-    private Long activoId;
+    @Column(name = "ticket_id")
+    private Long ticketId;
 
     @Column(name = "descripcion")
     private String descripcion;
