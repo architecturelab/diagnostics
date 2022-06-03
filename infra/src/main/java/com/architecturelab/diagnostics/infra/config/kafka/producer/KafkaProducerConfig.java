@@ -15,7 +15,7 @@ import java.util.Map;
 @Configuration
 public class KafkaProducerConfig {
     @Autowired
-    private ProducerFactory<Integer, String> producerFactory;
+    private ProducerFactory<Integer, Message> producerFactory;
 
     public Map<String, Object> producerConfig() {
         Map<String, Object> producerConfig = new HashMap<>(producerFactory.getConfigurationProperties());
